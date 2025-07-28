@@ -1,0 +1,344 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap");
+
+/* Estilos generales del cuerpo */
+body {
+  font-family: "Open Sans", sans-serif; /* Cambié la tipografía para que coincida */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.context {
+  width: 100%;
+  position: absolute;
+  top: 50vh;
+}
+
+.context h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 50px;
+}
+
+.area {
+  background: #4e54c8;
+  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
+  width: 100%;
+  height: 100vh;
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+}
+/* Estilos para el contenedor de comentarios */
+#comment-section {
+  width: 600px; /* Ancho de 400px */
+  border-radius: 8px; /* Bordes redondeados de 8px */
+  padding: 40px; /* Relleno interno de 30px */
+  text-align: center; /* Centra el texto */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde con transparencia */
+  backdrop-filter: blur(15px); /* Aplica un efecto de desenfoque de fondo */
+  -webkit-backdrop-filter: blur(
+    12px
+  ); /* Efecto de desenfoque para navegadores basados en WebKit */
+  background: rgba(255, 255, 255, 0.2);
+
+  position: relative;
+  top: 25%; /* Posición en la parte superior */
+  left: 32%; /* Centra horizontalmente */
+}
+
+/* Estilos para el encabezado */
+h2 {
+  font-size: 2rem; /* Tamaño de fuente de 2rem */
+  margin-bottom: 20px; /* Margen inferior de 20px */
+  color: #fff; /* Color del texto blanco */
+}
+
+h5 {
+  font-size: 2rem; /* Tamaño de fuente de 2rem */
+  color: #000000; /* Color del texto blanco */
+}
+
+/* Estilos para el campo de comentario */
+input[type="text"] {
+  width: 92%; /* Ancho completo */
+  padding: 10px; /* Espaciado interno */
+  margin: 10px 0; /* Margen superior e inferior */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Estilos para el botón */
+button {
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-weight: 600; /* Fuente en negrita */
+  border: none; /* Sin borde */
+  padding: 12px 20px; /* Relleno de 12px vertical y 20px horizontal */
+  cursor: pointer; /* Cambia el cursor al estilo de puntero */
+  border-radius: 3px; /* Bordes redondeados de 3px */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  border: 2px solid transparent; /* Borde transparente */
+  transition: 0.3s ease; /* Transición suave para los cambios */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+button:hover {
+  color: #fff; /* Color del texto blanco al pasar el mouse */
+  border-color: #fff; /* Color del borde blanco al pasar el mouse */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fondo con transparencia al pasar el mouse */
+}
+
+.historial-button {
+  position: absolute;
+  top: 20px;
+  right: 250px;
+
+  padding: 25px 40px;
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-weight: 600; /* Fuente en negrita */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al estilo de puntero */
+  border-radius: 3px; /* Bordes redondeados de 3px */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  border: 2px solid transparent; /* Borde transparente */
+  transition: 0.3s ease; /* Transición suave para los cambios */
+  z-index: 10; /* Asegura que esté en el frente */
+  display: inline-block; /* Asegura que el botón se ajuste correctamente */
+  margin: 0; /* Asegura que no haya margen que cause problemas */
+}
+
+.historial-button:hover {
+  color: #fff; /* Color del texto blanco al pasar el mouse */
+  border-color: #fff; /* Color del borde blanco al pasar el mouse */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fondo con transparencia al pasar el mouse */
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+
+  padding: 25px 40px;
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-weight: 600; /* Fuente en negrita */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al estilo de puntero */
+  border-radius: 3px; /* Bordes redondeados de 3px */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  border: 2px solid transparent; /* Borde transparente */
+  transition: 0.3s ease; /* Transición suave para los cambios */
+  z-index: 10; /* Asegura que esté en el frente */
+  display: inline-block; /* Asegura que el botón se ajuste correctamente */
+  margin: 0; /* Asegura que no haya margen que cause problemas */
+}
+
+.logout-button:hover {
+  color: #fff; /* Color del texto blanco al pasar el mouse */
+  border-color: #fff; /* Color del borde blanco al pasar el mouse */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fondo con transparencia al pasar el mouse */
+}
+
+/* Estilos para el modal de alerta */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+select {
+  margin: 10px 0; /* Margen superior e inferior */
+
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-weight: 600; /* Fuente en negrita */
+  border: none; /* Sin borde */
+  padding: 12px 20px; /* Relleno de 12px vertical y 20px horizontal */
+  cursor: pointer; /* Cambia el cursor al estilo de puntero */
+  border-radius: 3px; /* Bordes redondeados de 3px */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  border: 2px solid transparent; /* Borde transparente */
+  transition: 0.3s ease; /* Transición suave para los cambios */
+}
+
+#continue-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #4e54c8;
+  color: #fff;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+
+#continue-button:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fondo con transparencia al pasar el mouse */
+  color: #000000; /* Color del texto blanco al pasar el mouse */
+  border-color: #000000; /* Color del borde blanco al pasar el mouse */
+}

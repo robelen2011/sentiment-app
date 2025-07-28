@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingrese su comentario</title>
+    <link rel="stylesheet" href="/web/style-alumno.css">
+    <script src="/web/script.js" defer></script>
+</head>
+<body>
+    <button class="logout-button" onclick="logout()">Cerrar Sesión</button>
+    <button class="historial-button" onclick="openHistorialModal()">Historial</button>
+     <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+            
+        </ul>
+
+        <div id="comment-section">
+            <h2>Ingrese su comentario</h2>
+            <select id="materias" name="select">
+                <option value="Programación 1">Programación 1</option>
+                <option value="Análisis Matematico" >Análisis Matematico</option>
+                <option value="Administración">Administración</option>
+                <option value="Computación">Computación</option>
+                <option value="Química" >Química</option>
+                <option value="Informática 1">Informática 1</option>
+                <option value="Calidad de Software">Calidad de Software</option>
+                <option value="Álgebra" >Álgebra</option>
+                <option value="Álgebra" >Matematica Discreta</option>
+                <option value="Álgebra" >Base de Datos</option>
+                <option value="Álgebra" >Derecho Informatico</option>
+                <option value="Álgebra" >Seminario</option>
+
+              </select>
+            <input type="text" id="comment" placeholder="Comentario">
+            <br></br>
+            <button onclick="submitComment()">Enviar Comentario</button>
+        </div>
+    </div>
+
+     <!-- Modal para la alerta -->
+     <div id="alertModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modal-message"></p>
+            <button id="continue-button" onclick="closeModal()">Quiero seguir comentando</button>
+        </div>
+    </div>
+
+     <!-- Modal para el historial -->
+     <div id="historialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeHistorialModal()">&times;</span>
+            <h5>Historial de Comentarios</h5>
+    <ul id="comments-list">
+        <!-- Aquí se agregarán los comentarios -->
+    </ul>
+        </div>
+    </div>
+
+</body>
+</html>

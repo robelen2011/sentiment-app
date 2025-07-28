@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comentarios de Alumnos</title>
+    <link rel="stylesheet" href="/web/style.css" />
+    <script src="/web/script.js" defer></script>
+  </head>
+
+  <body>
+    <button class="logout-button" onclick="logout()">Cerrar Sesión</button>
+    <h2>Comentarios de Alumnos</h2>
+    <button class="clear-comments-button" onclick="clearComments()">
+      Eliminar Comentarios
+    </button>
+
+    <ul id="comments-list"></ul>
+    <!-- Este elemento mostrará los comentarios -->
+    <div class="data-container">
+      <div class="comment-counter">
+        <h3>Comentarios recibidos esta semana:</h3>
+        <p id="comment-count">0</p>
+      </div>
+      <h7>Evaluación de Participación</h7>
+      <div class="skill">
+        <div class="outer">
+          <div class="inner">
+            <div class="number">0%</div>
+          </div>
+        </div>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          width="160px"
+          height="160px"
+        >
+          <defs>
+            <linearGradient id="GradientColor">
+              <stop offset="0%" stop-color="#DA22FF" />
+              <stop offset="100%" stop-color="#9733EE" />
+            </linearGradient>
+          </defs>
+          <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+        </svg>
+      </div>
+    </div>
+    <!-- Imágenes de sentimiento con porcentaje -->
+
+    <div class="sentiment-stats">
+      <div class="image-container">
+        <img src="https://iili.io/2TR93Dg.md.png" alt="Positivo" />
+        <div class="image-label">
+          Positivo <span id="positive-percentage">0%</span>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="https://iili.io/2TR92OF.md.png" alt="Negativo" />
+        <div class="image-label">
+          Negativo <span id="negative-percentage">0%</span>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="https://iili.io/2TR9Kxa.md.png" alt="Neutral" />
+        <div class="image-label">
+          Neutral <span id="neutral-percentage">0%</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

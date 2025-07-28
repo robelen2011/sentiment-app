@@ -1,0 +1,486 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@200;300;400;500;600;700&display=swap"); /* Importa la fuente "Open Sans" de Google Fonts */
+
+* {
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+  box-sizing: border-box; /* Ajusta el modelo de caja para incluir bordes y rellenos en el tamaño total */
+  font-family: "Open Sans", sans-serif; /* Aplica la fuente "Open Sans" a todos los elementos */
+}
+body {
+  background: -moz-linear-gradient(
+    45deg,
+    #02e1ba 0%,
+    #26c9f2 29%,
+    #d911f2 66%,
+    #ffa079 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #02e1ba 0%,
+    #26c9f2 29%,
+    #d911f2 66%,
+    #ffa079 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #02e1ba 0%,
+    #26c9f2 29%,
+    #d911f2 66%,
+    #ffa079 100%
+  );
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 15s ease infinite;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+  /*min-height: calc(100vh - 2rem);*/
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  overflow: hidden; /* Evita el desplazamiento horizontal */
+  background-attachment: fixed; /* Fija el fondo */
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: "";
+  width: 70vmax;
+  height: 70vmax;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.07);
+  left: -20vmin;
+  top: -20vmin;
+  animation: morph 15s linear infinite alternate, spin 20s linear infinite;
+  z-index: 1;
+  will-change: border-radius, transform;
+  transform-origin: 55% 55%;
+  pointer-events: none;
+}
+
+body::after {
+  width: 70vmin;
+  height: 70vmin;
+  left: auto;
+  right: -10vmin;
+  top: auto;
+  bottom: 0;
+  animation: morph 10s linear infinite alternate,
+    spin 26s linear infinite reverse;
+  transform-origin: 20% 20%;
+}
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes Gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+  }
+  100% {
+    border-radius: 40% 60%;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+.st0 {
+  display: none;
+}
+.st1 {
+  display: inline;
+}
+.st2 {
+  opacity: 0.29;
+}
+.st3 {
+  fill: #ffffff;
+}
+.st4 {
+  clip-path: url(#SVGID_2_);
+  fill: #ffffff;
+}
+.st5 {
+  clip-path: url(#SVGID_4_);
+}
+.st6 {
+  clip-path: url(#SVGID_6_);
+}
+.st7 {
+  clip-path: url(#SVGID_8_);
+}
+.st8 {
+  clip-path: url(#SVGID_10_);
+}
+.st9 {
+  fill: none;
+}
+.st10 {
+  clip-path: url(#SVGID_12_);
+}
+.st11 {
+  opacity: 0.7;
+}
+.st12 {
+  clip-path: url(#SVGID_14_);
+}
+.st13 {
+  opacity: 0.2;
+}
+.st14 {
+  clip-path: url(#SVGID_16_);
+}
+.st15 {
+  opacity: 0.3;
+  fill: #ffffff;
+  enable-background: new;
+}
+/* Estilos para el encabezado */
+h2 {
+  font-size: 4rem; /* Tamaño de fuente de 2rem */
+  margin-bottom: 20px; /* Margen inferior de 20px */
+  color: #fff; /* Color del texto blanco */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde con transparencia */
+  backdrop-filter: blur(15px); /* Aplica un efecto de desenfoque de fondo */
+  -webkit-backdrop-filter: blur(
+    12px
+  ); /* Efecto de desenfoque para navegadores basados en WebKit */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px; /* Bordes redondeados */
+  position: fixed;
+  top: 5%;
+  left: 29.5%;
+}
+
+/* Estilos para la lista de comentarios */
+#comments-list {
+  list-style-type: none; /* Sin viñetas */
+  padding: 0; /* Sin espaciado interno */
+  max-width: 1500px; /* Ancho máximo de la lista */
+  margin: 200px auto; /* Centrar la lista horizontalmente */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde con transparencia */
+  backdrop-filter: blur(15px); /* Aplica un efecto de desenfoque de fondo */
+  -webkit-backdrop-filter: blur(
+    15px
+  ); /* Efecto de desenfoque para navegadores basados en WebKit */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  position: relative;
+  top: 40%;
+  transform: translateY(30%);
+  font-size: 1.5rem; /* Ajustar tamaño de fuente */
+  text-align: left; /* Alinear texto a la izquierda */
+  color: #333; /* Color del texto */
+  font-family: "Arial", sans-serif; /* Familia de fuente */
+}
+
+#comments-list li {
+  padding: 15px;
+  margin: 10px 0;
+  background: #630163; /* Fondo semi-transparente */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  transition: background 0.3s ease; /* Transición suave */
+}
+
+#comments-list li:hover {
+  background: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* Fondo completamente blanco al pasar el ratón */
+  color: #000; /* Cambia el color del texto a negro */
+}
+#comments-list li:hover .comment-text {
+  color: #000000; /* Cambia el color del texto a negro solo para el texto de comentario */
+}
+
+#comments-list li span {
+  font-weight: bold; /* Negrita para el texto */
+  color: #4cb1ec; /* Color azul para el resultado del análisis */
+}
+
+#comments-list li .sentiment {
+  font-style: italic; /* Cursiva para el sentimiento */
+  color: #e0d649; /* Color rojo tomate para el sentimiento */
+}
+
+#comments-list li .materia {
+  font-style: italic; /* Cursiva para el sentimiento */
+  color: #bbff00; /* Color rojo tomate para el sentimiento */
+}
+
+/* Estilos para cada comentario */
+.comment-item {
+  padding: 15px; /* Espaciado interno */
+  border-bottom: 1px solid #ddd; /* Borde inferior */
+  display: flex; /* Usar flexbox para alinear la carita */
+  align-items: center; /* Centrar verticalmente */
+}
+
+/* Estilos para la última línea de comentarios */
+.comment-item:last-child {
+  border-bottom: none; /* Sin borde en el último comentario */
+}
+
+/* Estilos para las caritas */
+.comment-icon {
+  width: 30px; /* Ancho de la carita */
+  height: 30px; /* Alto de la carita */
+  margin-right: 10px; /* Espacio entre la carita y el comentario */
+}
+
+/* Estilos para el texto del comentario */
+.comment-text {
+  flex-grow: 1; /* Ocupa el espacio restante */
+  color: #555; /* Color del texto */
+}
+
+/* Estilos para los resultados del análisis */
+.comment-result {
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  color: #777; /* Color gris claro */
+  top: 50%; /* Margen superior */
+}
+
+.comment-counter {
+  text-align: center;
+  color: #ffffff;
+  margin: 20px; /* Centrado automático */
+  padding: 20px;
+  width: 450px; /* Ancho fijo para el contador */
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde con transparencia */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* Disposición vertical */
+  align-items: center; /* Centrado horizontal */
+  position: fixed;
+  top: 25%;
+  left: 0.2%;
+}
+
+.comment-counter h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.comment-counter #comment-count {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #800080;
+  padding: 10px 40px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 1000px;
+  width: 400px;
+  justify-content: center;
+}
+
+h7 {
+  font-size: 2rem; /* Tamaño de fuente de 2rem */
+  margin-bottom: 20px; /* Margen inferior de 20px */
+  color: #fff; /* Color del texto blanco */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borde con transparencia */
+  backdrop-filter: blur(15px); /* Aplica un efecto de desenfoque de fondo */
+  -webkit-backdrop-filter: blur(
+    12px
+  ); /* Efecto de desenfoque para navegadores basados en WebKit */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px; /* Bordes redondeados */
+  position: fixed;
+  top: 45%;
+  left: 2.5%;
+  font-family: "Open Sans";
+}
+
+.skill {
+  margin-top: 140px;
+  margin-left: 160px;
+  height: 160px;
+  width: 160px;
+  position: relative;
+}
+
+.outer {
+  height: 160px;
+  width: 160px;
+  padding: 20px;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.inner {
+  height: 120px;
+  width: 120px;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#number {
+  font-weight: 600;
+  color: #555;
+  font-size: 30px;
+}
+
+circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 450;
+  stroke-dashoffset: 420;
+}
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logout-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  font-weight: 600; /* Fuente en negrita */
+  border: none; /* Sin borde */
+  padding: 12px 20px; /* Relleno de 12px vertical y 20px horizontal */
+  cursor: pointer; /* Cambia el cursor al estilo de puntero */
+  border-radius: 3px; /* Bordes redondeados de 3px */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  border: 2px solid transparent; /* Borde transparente */
+  transition: 0.3s ease; /* Transición suave para los cambios */
+}
+
+.logout-button:hover {
+  color: #fff; /* Color del texto blanco al pasar el mouse */
+  border-color: #fff; /* Color del borde blanco al pasar el mouse */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Fondo con transparencia al pasar el mouse */
+}
+.clear-comments-button {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #a700a7; /* Rojo */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600; /* Negrita */
+}
+
+.clear-comments-button:hover {
+  background-color: #800080; /* Rojo más oscuro */
+}
+
+.sentiment-stats {
+  position: fixed; /* Fijo para mantener la posición */
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px; /* Ajusta el ancho del contenedor */
+  left: 80%;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0; /* Espacio entre las imágenes */
+  background-color: #800080; /* Fondo morado */
+  padding: 15px; /* Espacio alrededor de la imagen */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.image-container img {
+  max-width: 250px; /* Ancho máximo de la imagen */
+  max-height: 250px; /* Altura máxima de la imagen */
+  width: 100%; /* Asegura que la imagen no se distorsione */
+  height: auto; /* Ajuste automático de altura */
+  border-radius: 8px; /* Ajusta esto si quieres bordes redondeados también para la imagen */
+  transition: height 0.3s ease;
+}
+
+.image-label {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+
+.image-label span {
+  display: block;
+  font-size: 0.8rem;
+  color: #ffffff;
+}
