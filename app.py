@@ -5,7 +5,7 @@ import os
 import json
 from flask_cors import CORS
 
-app = Flask(__name__, template_folder='../web', static_folder='../web')
+app = Flask(__name__, template_folder='web', static_folder='web')
 CORS(app)  # Permite todas las solicitudes de cualquier origen
 
 # Cargar el modelo y el tokenizador para análisis de sentimientos en español
