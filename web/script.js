@@ -24,23 +24,22 @@ function login() {
 function submitComment() {
   const commentText = document.getElementById("comment").value;
   const materia = document.getElementById("materias").value;
+
   if (commentText) {
     analyzeSentiment(commentText, materia)
       .then(() => {
-        console.log("No se pudo enviar el comentario");
-        document.getElementById("comment").value = "";
-        showAlert("No se pudo enviar el mensaje.");
-        // Limpiar el campo de entrada
-      })
-      .catch(() => {
+        // ✅ ÉXITO
         console.log("Comentario enviado con éxito");
         document.getElementById("comment").value = "";
-        showAlert(
-          "¡Gracias por tu comentario! <br> </br>  ¡Tu opinión ayudara a hacer de nuestras clases una mejor experiencia! "
-        );
-        // Incrementar el contador de comentarios y actualizar en localStorage
+        showAlert("¡Gracias por tu comentario!<br><br>Tu opinión ayudará a mejorar nuestras clases.");
+        // Guardar en localStorage
         commentCount++;
         localStorage.setItem("commentCount", commentCount);
+      })
+      .catch(() => {
+        // ❌ ERROR
+        console.log("No se pudo enviar el comentario");
+        showAlert("No se pudo enviar el mensaje.");
       });
   } else {
     console.log("El campo de comentario está vacío");
@@ -48,7 +47,7 @@ function submitComment() {
 }
 
 function analyzeSentiment(text, materia) {
-  return fetch("http://localhost:5000/analyze", {
+  return fetch("/comment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -57,19 +56,14 @@ function analyzeSentiment(text, materia) {
   })
     .then((response) => response.json())
     .then((data) => {
-      const commentResult = {
-        text: text,
-        materia: materia,
-        sentiment: data.label,
-        score: data.score,
-      };
-      comments.push(commentResult);
-      localStorage.setItem("comments", JSON.stringify(comments)); // Guardar comentarios en localStorage
-      displayComments();
+      if (data.success) {
+        comments.push(data.comment);
+        displayComments();
+      }
     })
     .catch((error) => {
       console.error("Error:", error);
-      throw error; // Lanza el error para capturarlo en submitComment
+      throw error;
     });
 }
 
@@ -148,17 +142,25 @@ function updateSentimentStats() {
 }
 
 function displayComments() {
-  const commentsList = document.getElementById("comments-list");
-  commentsList.innerHTML = ""; // Limpiar la lista antes de mostrar
+  fetch("/comments")
+    .then((res) => res.json())
+    .then((serverComments) => {
+      comments = serverComments;
+      const commentsList = document.getElementById("comments-list");
+      if (!commentsList) return;
 
-  comments.forEach((commentResult) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<span>${commentResult.text}</span> - <span>${commentResult.materia}</span> - <span class="sentiment">Resultado del análisis: ${commentResult.sentiment}</span>`;
-    commentsList.appendChild(li);
-  });
+      commentsList.innerHTML = "";
+      comments.forEach((comment) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${comment.text}</span> - <span>${comment.materia}</span> - <span class="sentiment">Resultado del análisis: ${comment.sentiment}</span>`;
+        commentsList.appendChild(li);
+      });
 
-  updateSentimentStats();
+      updateSentimentStats();
+      updateCommentCount(comments.length);
+    });
 }
+
 
 // Para cargar los comentarios al abrir la página docente
 if (document.getElementById("comments-list")) {
@@ -169,30 +171,35 @@ function logout() {
   window.location.href = "/web/index.html"; // Redirige a la página de inicio de sesión
 }
 
-function clearComments() {
-  localStorage.removeItem("comments"); // Elimina la clave "comments" del localStorage
-  comments = []; // Resetea el array de comentarios
-  updateCommentCount(0); // Reinicia el contador de comentarios a "0" en la página
-  displayComments(); // Actualiza la interfaz
-}
-
-// Para cargar los comentarios al abrir la página docente
-if (document.getElementById("comments-list")) {
-  displayComments();
-}
-
 function updateCommentCount(count) {
-  document.getElementById("comment-count").textContent = `${count}`;
+  const commentCountElem = document.getElementById("comment-count");
+  if (commentCountElem) {
+    commentCountElem.textContent = count;
+  }
 }
 
-// Para cargar los comentarios al abrir la página docente
-if (document.getElementById("comments-list")) {
-  displayComments();
+function clearComments() {
+  fetch('/clear_comments', {
+    method: 'POST',
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      comments = [];
+      updateCommentCount(0);
+      displayComments();
+      alert("Comentarios eliminados correctamente.");
+    } else {
+      alert("Error al eliminar comentarios.");
+    }
+  })
+  .catch(() => {
+    alert("Error al comunicarse con el servidor.");
+  });
 }
-// Al cargar la página de docentes, actualizar el contador de comentarios
-if (document.getElementById("comment-count")) {
-  updateCommentCount(commentCount);
-}
+
+
+
 
 function setPercentage(percentage) {
   const circle = document.querySelector("circle");
