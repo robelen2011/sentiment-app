@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify
 from transformers import BertForSequenceClassification, BertTokenizer
 import torch
+import os
+import json
 from flask_cors import CORS
 
-app = Flask(__name__, template_folder='web', static_folder='web')
+app = Flask(__name__, template_folder='../web', static_folder='../web')
 CORS(app)  # Permite todas las solicitudes de cualquier origen
 
 # Cargar el modelo y el tokenizador para análisis de sentimientos en español
@@ -38,15 +40,55 @@ def analyze():
         "label": label,
         "score": score
     })
+    
+
+# Ruta al archivo JSON
+COMMENTS_FILE = 'comentarios.json'
+
+# Cargar comentarios del archivo JSON
+def load_comments():
+    if not os.path.exists(COMMENTS_FILE):
+        return []
+    with open(COMMENTS_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+# Guardar comentarios en el archivo JSON
+def save_comment(comment):
+    comments = load_comments()
+    comments.append(comment)
+    with open(COMMENTS_FILE, 'w', encoding='utf-8') as f:
+        json.dump(comments, f, ensure_ascii=False, indent=2)
+
+@app.route('/comment', methods=['POST'])
+def comment():
+    data = request.get_json()
+    text = data.get("text", "")
+    materia = data.get("materia", "")
+    label, score = predict(text)
+    
+    comment_data = {
+        "text": text,
+        "materia": materia,
+        "sentiment": label,
+        "score": score
+    }
+
+    save_comment(comment_data)
+
+    return jsonify({"success": True, "comment": comment_data})
+
+@app.route('/comments', methods=['GET'])
+def get_comments():
+    return jsonify(load_comments())
+
+@app.route('/clear_comments', methods=['POST'])
+def clear_comments():
+    with open(COMMENTS_FILE, 'w', encoding='utf-8') as f:
+        f.write('[]')
+    return jsonify({"success": True})
+
+
+
 
 if __name__== '__main__':
     app.run(host="0.0.0.0",port=5000)
-
-
-
-
-
-
-
-
-
